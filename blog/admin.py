@@ -1,3 +1,8 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import Message, AboutUs, Classes, Schedules
+
+admin.site.register(Message)
+admin.site.register(AboutUs)
+admin.site.register(Classes)
+admin.site.register(Schedules)

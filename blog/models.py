@@ -1,38 +1,42 @@
-from tabnanny import verbose
 from django.db import models
 
-# Create your models here.
 class AboutUs(models.Model):
-    title = models.CharField(max_length=255)
-    content = models.TextField()
+    name = models.CharField(max_length=255)
+    email = models.EmailField()
     image = models.ImageField()
 
-    class Meta:
-        verbose_name = 'About Us'
-        verbose_name_plural = 'About Us'
+    def __str__(self) -> str:
+        return self.name
 
-class Trainer(models.Model):
-    name = models.CharField(max_length=50)
-    bio = models.TextField()
-    image = models.ImageField()
+class Classes(models.Model):
+    class_name = models.CharField(max_length=255)
+    trainer_name = models.ForeignKey(AboutUs, on_delete=models.CASCADE)
+    class_image = models.ImageField()
+
+    def __str__(self) -> str:
+        return self.class_name
+
+class Schedules(models.Model):
+    name = models.ForeignKey(Classes, on_delete=models.CASCADE)
+    time = models.DateTimeField()
 
     def __str__(self) -> str:
         return self.name 
 
-class Classes(models.Model):
-    title = models.CharField(max_length=50)
-    content = models.TextField()
-    trainer = models.ForeignKey(Trainer, on_delete=models.CASCADE)
-    price = models.IntegerField()
-    
-    def __str__(self) -> str:
-        return self.title
-
 class Contact(models.Model):
     title = models.CharField(max_length=255)
-    name = models.CharField(max_length=50)
+    phone = models.CharField(max_length=50)
     email = models.EmailField()
     message = models.TextField()
 
     def __str__(self) -> str:
         return self.title
+
+
+class Message(models.Model):
+    name = models.CharField(max_length=100)
+    email = models.EmailField()
+    message = models.TextField()
+
+    def __str__(self):
+        return self.name
