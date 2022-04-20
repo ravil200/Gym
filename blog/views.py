@@ -1,10 +1,17 @@
 from django.shortcuts import render, redirect
 from .forms import ContactForm
-from .models import Message
+from .models import Message, AboutUs, Classes
+
 
 
 def home(request):
-    return render(request, 'index.html')
+    about = AboutUs.objects.all()
+    train_list = Classes.objects.all()
+    context = {
+        'about_list':about,
+         'train_list':train_list
+    }
+    return render(request, 'index.html', context)
 
 def send_message(request):
     if request.method == 'POST':
