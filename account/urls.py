@@ -1,8 +1,8 @@
 from django.urls import path
-from blog.views import send_email, send_success
+from .views import send_user
 
+app_name = 'account'
 
 urlpatterns = [
-    path('send_email', send_email, name='send_email'),
-    path('success/', send_success, name='send_success'),
+    path('send_email', send_user, name='send_user'),
 ]

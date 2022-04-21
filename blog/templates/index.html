@@ -445,15 +445,15 @@ https://www.tooplate.com/view/2119-gymso-fitness
 
           <div class="modal-body">
             
-            <form class="membership-form webform" role="form" action="{% url 'send_message' %}" method="POST">
+            <form class="membership-form webform" role="form" action="{% url 'account:send_user' %}" method="POST">
                 {% csrf_token %}
-                <input type="text" class="form-control" name="name" placeholder="Your name">
+                <input type="text" class="form-control" name="username" placeholder="Your name">
 
-                <input type="email" class="form-control" name="email" placeholder="Your_gmail@gmail.com">
+                <input type="email" class="form-control" name="email" placeholder="Сиздин email@gmail.com">
 
-                <input type="tel" class="form-control" name="cf-phone" placeholder="Phone namber" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+                <input type="tel" class="form-control" name="phone" placeholder="Phone namber">
 
-                <textarea class="form-control" rows="3" name="cf-message" placeholder="Additional Message"></textarea>
+                <textarea class="form-control" rows="3" name="message" placeholder="Additional Message"></textarea>
 
                 <button type="submit" class="form-control" id="submit-button" name="submit">Submit Button</button>
 

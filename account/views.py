@@ -7,7 +7,7 @@ from .models import User
 
 
 
-def send_email(request):
+def send_user(request):
     if request.method == 'POST':
         form = ContactForm(request.POST)
         if form.is_valid():
@@ -38,6 +38,3 @@ def send_email(request):
         'form': form
         }
         return render(request, 'blog/index.html', context)
-
-# def send_success(request):
-#     return redirect(request, 'index.html')
