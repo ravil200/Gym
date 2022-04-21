@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from .forms import ContactForm
@@ -38,3 +39,21 @@ def send_user(request):
         'form': form
         }
         return render(request, 'blog/index.html', context)
+=======
+from django.shortcuts import render, redirect
+from django.contrib.auth.models import User, auth
+
+
+def register(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        if username:
+                user = User.objects.create_user(username=username)
+                user.save()
+                print('User Created!')
+        else:
+            print('password not match')
+        return redirect('/')
+    else:
+        return render(request, 'index.html')
+>>>>>>> 3628f08731f099a6d2224679f692a994365df98b

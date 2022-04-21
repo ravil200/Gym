@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
+import os
 from pathlib import Path
 import os
 
@@ -38,8 +39,17 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+<<<<<<< HEAD
     'blog.apps.BlogConfig',
     'account.apps.AccountConfig',
+=======
+    'blog',
+    'Classes',
+    'Contact',
+    'Schedules',
+    'AboutUs',
+    'account',
+>>>>>>> 3628f08731f099a6d2224679f692a994365df98b
 ]
 
 MIDDLEWARE = [
@@ -119,10 +129,19 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
+<<<<<<< HEAD
 STATIC_ROOT = os.path.join(BASE_DIR, "static/")
 
 MEDIA_URL = 'media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, "media/")
+=======
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static')
+]
+MEDIA_URL = 'media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+>>>>>>> 3628f08731f099a6d2224679f692a994365df98b
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
