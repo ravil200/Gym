@@ -7,7 +7,8 @@ from .models import User
 
 
 
-def send_email(request):
+def send_user(request):
+    print('send email')
     if request.method == 'POST':
         form = ContactForm(request.POST)
         if form.is_valid():
@@ -29,7 +30,6 @@ def send_email(request):
                                             message=message).save()
             except BadHeaderError:
                 return HttpResponse('invalid data')
-            
         return redirect('/')
     else:
         form = ContactForm()
@@ -37,7 +37,9 @@ def send_email(request):
         context = {
         'form': form
         }
-        return render(request, 'blog/index.html', context)
+        return render(request, 'index.html', context)
+
+    
 
 # def send_success(request):
 #     return redirect(request, 'index.html')
